@@ -1,0 +1,49 @@
+.feedback-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(11, 43, 23, 0.1);
+}
+
+.feedback-label {
+  font-size: 14px;
+  color: var(--agri-gray-500);
+}
+
+.feedback-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.feedback-button {
+  min-width: 44px;
+  min-height: 44px;
+  border: 2px solid var(--agri-green-100);
+  background-color: white;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.feedback-button:hover {
+  border-color: var(--agri-green-500);
+  transform: scale(1.1);
+  background-color: var(--agri-green-50);
+}
+
+.feedback-button:active {
+  transform: scale(0.95);
+}
+
+.feedback-given {
+  color: var(--agri-green-500);
+  font-size: 14px;
+  font-weight: 500;
+}

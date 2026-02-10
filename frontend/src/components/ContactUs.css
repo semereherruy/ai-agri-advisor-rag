@@ -1,0 +1,211 @@
+.contact-page {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, var(--agri-green-50) 0%, white 100%);
+}
+
+.contact-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 48px 16px;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.contact-title {
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--agri-green-900);
+  margin-bottom: 16px;
+}
+
+.contact-subtitle {
+  font-size: 18px;
+  color: var(--agri-gray-500);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.contact-info-icon {
+  font-size: 24px;
+  color: var(--agri-green-600);
+  flex-shrink: 0;
+}
+
+.contact-info-content h3 {
+  font-weight: 600;
+  color: var(--agri-green-900);
+  margin-bottom: 4px;
+}
+
+.contact-info-content p {
+  font-size: 14px;
+  color: var(--agri-gray-500);
+}
+
+.contact-feedback-card {
+  background: linear-gradient(135deg, var(--agri-green-600) 0%, var(--agri-green-500) 100%);
+  color: white;
+  padding: 24px;
+  border-radius: 16px;
+}
+
+.contact-feedback-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.contact-feedback-card p {
+  font-size: 14px;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.contact-form-card {
+  padding: 24px;
+}
+
+.contact-form-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--agri-green-900);
+  margin-bottom: 24px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--agri-green-900);
+  margin-bottom: 8px;
+}
+
+.contact-form-input,
+.contact-form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--agri-green-100);
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  background-color: var(--agri-green-50);
+  color: var(--agri-green-900);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.contact-form-input:focus,
+.contact-form-textarea:focus {
+  border-color: var(--agri-green-500);
+}
+
+.contact-form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form-submitted {
+  text-align: center;
+  padding: 32px;
+}
+
+.contact-form-submitted-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.contact-form-submitted h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--agri-green-900);
+  margin-bottom: 8px;
+}
+
+.contact-form-submitted p {
+  font-size: 14px;
+  color: var(--agri-gray-500);
+}
+
+.contact-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding-top: 32px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 32px 16px;
+  }
+
+  .contact-title {
+    font-size: 32px;
+  }
+
+  .contact-subtitle {
+    font-size: 16px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .contact-actions {
+    flex-direction: column;
+  }
+
+  .contact-actions .btn-primary,
+  .contact-actions .btn-secondary {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-container {
+    padding: 24px 12px;
+  }
+
+  .contact-title {
+    font-size: 28px;
+  }
+
+  .contact-form-card {
+    padding: 20px;
+  }
+}
+

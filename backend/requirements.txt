@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+sentence-transformers
+transformers
+torch
+numpy
+pydantic
+googletrans==4.0.0-rc1

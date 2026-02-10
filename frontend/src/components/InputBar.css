@@ -1,0 +1,109 @@
+.input-bar {
+  display: flex;
+  align-items: center;
+  padding: 18px 24px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 0 0 32px 32px;
+  box-shadow: 0 -2px 12px rgba(47, 158, 68, 0.06);
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(4px) saturate(1.1);
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+}
+
+.input-field {
+  flex: 1;
+  padding: 16px 22px;
+  border-radius: 22px;
+  border: 1.5px solid var(--agri-green-100);
+  font-size: 17px;
+  outline: none;
+  margin-right: 14px;
+  background: var(--agri-green-50);
+  color: var(--agri-green-900);
+  transition: border 0.22s cubic-bezier(.23,1.01,.32,1), box-shadow 0.22s cubic-bezier(.23,1.01,.32,1);
+  box-shadow: 0 2px 8px rgba(47, 158, 68, 0.07);
+}
+
+.input-field:focus {
+  border: 1.5px solid var(--agri-green-500);
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(47, 158, 68, 0.13);
+}
+
+.input-field:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.input-field::placeholder {
+  color: var(--agri-gray-500);
+}
+
+
+.send-button {
+  background: linear-gradient(135deg, #60A664 0%, #2F9E44 100%);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(47, 158, 68, 0.13);
+  transition: all 0.22s cubic-bezier(.23,1.01,.32,1);
+  outline: none;
+}
+
+.send-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2F9E44 0%, #60A664 100%);
+  transform: scale(1.10);
+  box-shadow: 0 8px 32px rgba(47, 158, 68, 0.18);
+}
+
+.send-button:active:not(:disabled),
+.send-button.pressed {
+  transform: scale(0.96);
+}
+
+.send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.mic-button {
+  background-color: transparent;
+  color: var(--agri-gray-500);
+  border: 2px solid var(--agri-green-100);
+}
+
+.mic-button:hover:not(:disabled) {
+  background-color: var(--agri-green-100);
+}
+
+.mic-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .input-bar {
+    padding: 10px;
+  }
+  
+  .input-field {
+    font-size: 15px;
+    padding: 10px 14px;
+  }
+}

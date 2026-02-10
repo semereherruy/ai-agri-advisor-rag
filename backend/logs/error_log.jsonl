@@ -1,0 +1,12 @@
+{"timestamp": "2026-01-29T18:59:03.248084", "question_id": "897b4d8c-478f-414f-af62-637cbaa93871", "error": "'str' object has no attribute 'get'"}
+{"timestamp": "2026-01-29T18:59:16.444520", "question_id": "b90cf594-f32f-4a49-873a-091e9347772e", "error": "'str' object has no attribute 'get'"}
+{"timestamp": "2026-01-29T19:00:11.542322", "question_id": "05a62da3-f079-49f5-81be-ba34ce460777", "error": "'str' object has no attribute 'get'"}
+{"timestamp": "2026-01-29T19:00:27.055078", "question_id": "d27be397-9158-4552-a6b0-cea8119d469c", "error": "'str' object has no attribute 'get'"}
+{"timestamp": "2026-01-29T19:23:55.213354", "question_id": "c14ec26e-99bf-4b65-b18d-df025c6903cd", "error": "'str' object has no attribute 'get'"}
+{"timestamp": "2026-01-29T19:24:51.586336", "question_id": "5d985259-e113-4d2a-87d4-818d54bb0472", "error": "'str' object has no attribute 'get'"}
+{"timestamp": "2026-01-29T19:27:15.459030", "question_id": "10e63ce3-7481-4fcf-b1ae-d7473e544333", "error": "unable to open database file"}
+{"timestamp": "2026-01-29T19:28:40.300230", "question_id": "85876cc9-74a4-42d1-a1e7-1791c48d58bc", "error": "'str' object has no attribute 'get'"}
+{"timestamp": "2026-01-29T19:31:28.972431", "question_id": "41f97cc2-8898-4cc3-9060-adc7279f4270", "error": "'str' object has no attribute 'get'"}
+{"timestamp": "2026-01-29T19:31:53.076792", "question_id": "2e377652-0c3c-4087-855f-96c9a6694f33", "error": "'str' object has no attribute 'get'"}
+{"timestamp": "2026-01-29T19:32:51.398538", "question_id": "f0914870-b5d6-4593-a005-8271a5609e6c", "error": "'str' object has no attribute 'get'"}
+{"timestamp": "2026-01-29T19:33:41.253126", "question_id": "1ebd7492-d5d1-4290-aa85-2b50237bf85b", "error": "'str' object has no attribute 'get'"}

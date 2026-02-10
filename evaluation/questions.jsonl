@@ -1,0 +1,44 @@
+{"id": 1, "crop": "teff", "category": "general", "language": "en", "question": "What are the main requirements to grow teff successfully in Ethiopia?"}
+{"id": 2, "crop": "teff", "category": "general", "language": "en", "question": "Which teff varieties are suitable for highland areas?"}
+{"id": 3, "crop": "teff", "category": "general", "language": "en", "question": "What soil type is best for teff production?"}
+
+{"id": 4, "crop": "teff", "category": "planting", "language": "en", "question": "When is the best planting season for teff in Tigray?"}
+{"id": 5, "crop": "teff", "category": "planting", "language": "en", "question": "What happens if teff is planted too early or too late?"}
+{"id": 6, "crop": "teff", "category": "planting", "language": "en", "question": "What seed rate is recommended per hectare for teff?"}
+
+{"id": 7, "crop": "teff", "category": "soil_fertilizer", "language": "en", "question": "How should land be prepared before planting teff?"}
+{"id": 8, "crop": "teff", "category": "soil_fertilizer", "language": "en", "question": "When should fertilizer be applied for teff?"}
+{"id": 9, "crop": "teff", "category": "soil_fertilizer", "language": "en", "question": "What type of fertilizer improves teff yield the most?"}
+
+{"id": 10, "crop": "teff", "category": "pest_disease", "language": "en", "question": "What are common diseases affecting teff?"}
+{"id": 11, "crop": "teff", "category": "pest_disease", "language": "en", "question": "How can farmers control teff pests using simple methods?"}
+{"id": 12, "crop": "teff", "category": "pest_disease", "language": "en", "question": "What signs show that teff has a disease problem?"}
+
+{"id": 13, "crop": "teff", "category": "yield", "language": "en", "question": "How can teff yield be improved without expensive inputs?"}
+{"id": 14, "crop": "teff", "category": "yield", "language": "en", "question": "Does row planting increase teff productivity?"}
+{"id": 15, "crop": "teff", "category": "yield", "language": "en", "question": "What farming practices reduce teff lodging?"}
+
+{"id": 16, "crop": "maize", "category": "general", "language": "en", "question": "What conditions are required for good maize growth?"}
+{"id": 17, "crop": "maize", "category": "general", "language": "en", "question": "Which maize varieties are commonly used in Ethiopia?"}
+{"id": 18, "crop": "maize", "category": "general", "language": "en", "question": "What is the ideal spacing for maize planting?"}
+
+{"id": 19, "crop": "maize", "category": "planting", "language": "en", "question": "When is the best time to plant maize in rain-fed areas?"}
+{"id": 20, "crop": "maize", "category": "planting", "language": "en", "question": "How does late planting affect maize yield?"}
+
+{"id": 21, "crop": "maize", "category": "soil_fertilizer", "language": "en", "question": "What fertilizer schedule is recommended for maize?"}
+{"id": 22, "crop": "maize", "category": "soil_fertilizer", "language": "en", "question": "When should nitrogen fertilizer be applied to maize?"}
+{"id": 23, "crop": "maize", "category": "soil_fertilizer", "language": "en", "question": "How does soil fertility affect maize production?"}
+
+{"id": 24, "crop": "maize", "category": "pest_disease", "language": "en", "question": "What are the most common maize pests in Ethiopia?"}
+{"id": 25, "crop": "maize", "category": "pest_disease", "language": "en", "question": "How can farmers manage fall armyworm?"}
+{"id": 26, "crop": "maize", "category": "pest_disease", "language": "en", "question": "What are signs of maize disease in early growth stages?"}
+
+{"id": 27, "crop": "maize", "category": "climate", "language": "en", "question": "How does drought affect maize yield?"}
+{"id": 28, "crop": "maize", "category": "climate", "language": "en", "question": "What can farmers do if rainfall is irregular?"}
+{"id": 29, "crop": "maize", "category": "climate", "language": "en", "question": "Is maize sensitive to temperature changes?"}
+
+{"id": 30, "crop": "teff", "category": "practical", "language": "en", "question": "My teff is yellowing after two weeks. What could be the problem?"}
+{"id": 31, "crop": "maize", "category": "practical", "language": "en", "question": "I planted maize but rain stopped for 10 days. What should I do?"}
+{"id": 32, "crop": "maize", "category": "practical", "language": "en", "question": "I see insects eating maize leaves. Is this serious?"}
+{"id": 33, "crop": "general", "category": "practical", "language": "en", "question": "I have low yield every year. What is the main mistake farmers make?"}
+{"id": 34, "crop": "teff", "category": "practical", "language": "en", "question": "Can I grow teff on sandy soil?"}
