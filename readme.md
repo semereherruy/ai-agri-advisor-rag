@@ -77,7 +77,7 @@ agri-advisor-rag/
 
 ### Backend
 - **FastAPI** async endpoints
-- **Mock RAG service** (drop-in replacement for real RAG)
+- **RAG service** data retrieval
 - **Translation service** with Ge'ez script detection (Amharic/Tigrigna)
 - **Structured logging** (JSONL format)
 - **In-memory cache** for repeated queries
