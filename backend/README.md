@@ -102,7 +102,7 @@ Submit feedback for a question.
 
 ## Services
 
-- **RAG Service**: Mock implementation (drop-in replacement for real RAG)
+- **RAG Service**: retrieval from provided datas
 - **Translation Service**: Ge'ez script detection and translation (googletrans)
 - **Logging Service**: Structured JSONL logging
 - **Cache Service**: In-memory cache for repeated queries
@@ -125,6 +125,4 @@ The backend uses:
 ## Notes
 
 - Translation requires `googletrans` (may need internet connection)
-- Mock RAG service returns responses within ~500ms
-- Cache helps reduce response time for repeated queries
 
