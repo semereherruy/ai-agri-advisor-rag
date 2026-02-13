@@ -166,11 +166,6 @@ See `demo-checklist.txt` for manual testing procedures.
 - Translation requires internet connection (googletrans)
 - **macOS users:** Always use `python3` and `pip3` (not `python`/`pip`)
 
-## 🔧 Troubleshooting
-
-See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for common issues and solutions.
-
-
 ## 📜 Disclaimer
 
 This system provides advisory information only. Farmers should consult local agricultural extension services for critical decisions.
