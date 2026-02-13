@@ -164,20 +164,12 @@ See `demo-checklist.txt` for manual testing procedures.
 
 - This is an MVP prototype, not a production system
 - Translation requires internet connection (googletrans)
-- Mock RAG service returns responses within ~500ms
-- Cache TTL is set to 1 hour
 - **macOS users:** Always use `python3` and `pip3` (not `python`/`pip`)
 
 ## 🔧 Troubleshooting
 
 See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for common issues and solutions.
 
-## 🔮 Future Work
-
-- Replace mock RAG with real RAG implementation
-- Expand language support
-- Add voice input/output
-- Deploy to production
 
 ## 📜 Disclaimer
 
