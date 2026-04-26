@@ -87,6 +87,7 @@ agri-advisor-rag/
 - **Mobile-first responsive design**
 - **Smooth animations** (fade-in, slide, typing indicator)
 - **Multi-language support** (English, Amharic, Tigrigna)
+- **Improved input** - Expanded textarea with responsive design, no voice input
 - **Source display** with collapsible panel
 - **Feedback system** (thumbs up/down)
 - **Error handling** with toast notifications

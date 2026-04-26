@@ -25,7 +25,7 @@ const AboutUs: React.FC = () => {
               <div>
                 <h2 className="about-section-title">Our Mission</h2>
                 <p className="about-section-text">
-                  AI Agriculture Advisor is designed to provide Ethiopian farmers with reliable, 
+                  AI Agriculture Advisor is designed to provide farmers with reliable, 
                   data-grounded agricultural advice. We use Retrieval-Augmented Generation (RAG) 
                   technology to answer questions based on trusted agricultural documents, ensuring 
                   accurate and helpful information for farming practices.
@@ -50,7 +50,7 @@ const AboutUs: React.FC = () => {
                   </li>
                   <li className="about-list-item">
                     <span className="about-list-check">✓</span>
-                    <span>Support multiple languages: English, Amharic, and Tigrigna</span>
+                    <span>Support multiple languages: English, Amharic.</span>
                   </li>
                   <li className="about-list-item">
                     <span className="about-list-check">✓</span>
@@ -80,7 +80,7 @@ const AboutUs: React.FC = () => {
                   <div className="about-grid-item">
                     <h3 className="about-grid-title">Multi-language Support</h3>
                     <p className="about-grid-text">
-                      Automatic translation for Amharic and Tigrigna questions
+                      Automatic translation for English and Amharic questions
                     </p>
                   </div>
                 </div>

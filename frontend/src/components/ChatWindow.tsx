@@ -56,7 +56,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ messages, isLoading, onFeedback
                 Soil fertility tips
               </button>
             </div>
-            <p className="welcome-hint" style={{ color: 'var(--agri-green-600)', fontWeight: 500 }}>💡 I support English, Amharic, and Tigrigna</p>
+            <p className="welcome-hint" style={{ color: 'var(--agri-green-600)', fontWeight: 500 }}>💡 I support English and Amharic.</p>
           </div>
         )}
         {messages.map((message) => (

@@ -37,7 +37,7 @@ const WelcomePage: React.FC<WelcomePageProps> = ({ onContinue }) => {
         <div className="hero-badge">RAG • Ethiopia</div>
         <h1 className="welcome-title">AI Agriculture Advisor</h1>
         <p className="welcome-subtitle">
-          Evidence-based crop guidance for Ethiopia. Ask in English, Amharic, or Tigrigna and get answers grounded in trusted documents.
+          Evidence-based crop guidance for Ethiopia. Ask in English, Amharic and get answers grounded in trusted documents.
         </p>
         <div className="hero-highlights">
           <div className="highlight-pill">Teff & Maize</div>

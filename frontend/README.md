@@ -30,7 +30,7 @@ The app will open at `http://localhost:3000`
 - **ChatPage** - Main container component
 - **ChatWindow** - Scrollable message area
 - **MessageBubble** - Individual message display (user/assistant)
-- **InputBar** - Text input with send button and mic placeholder
+- **InputBar** - Text input with send button (expanded, responsive textarea)
 - **TypingIndicator** - Animated three-dot indicator
 - **SourcesPanel** - Collapsible sources display
 - **FeedbackBar** - Thumbs up/down feedback buttons

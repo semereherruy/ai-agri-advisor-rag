@@ -1,7 +1,7 @@
 import React, { useState, KeyboardEvent } from 'react';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
-import { Mic, Send } from 'lucide-react';
+import { Send } from 'lucide-react';
 import './InputBar.css';
 
 interface InputBarProps {
@@ -11,7 +11,6 @@ interface InputBarProps {
 
 const InputBar: React.FC<InputBarProps> = ({ onSendMessage, disabled }) => {
   const [inputText, setInputText] = useState('');
-  const [isListening, setIsListening] = useState(false);
 
   const handleSend = () => {
     if (inputText.trim() && !disabled) {
@@ -27,38 +26,28 @@ const InputBar: React.FC<InputBarProps> = ({ onSendMessage, disabled }) => {
     }
   };
 
-  const toggleMic = () => {
-    setIsListening(!isListening);
-    // Placeholder for actual speech recognition
-    console.log('Mic toggled:', !isListening);
-  };
 
   return (
     <div className="input-bar p-4 bg-white border-t border-green-100">
-      <div className="input-container flex items-center gap-2 max-w-4xl mx-auto">
-        <Input
-          type="text"
+      <div className="input-container flex items-center gap-2 w-full max-w-4xl mx-auto px-4">
+        <textarea
           placeholder="Ask about teff, maize, or farming..."
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
-          onKeyPress={handleKeyPress}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              handleSend();
+            }
+          }}
           disabled={disabled}
-          className="flex-1"
+          className="w-full p-3 border border-green-100 rounded-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 resize-none min-h-[50px] max-h-[150px] text-base"
+          rows={1}
         />
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={toggleMic}
-          disabled={disabled}
-          className={`p-2 ${isListening ? 'text-red-500' : 'text-green-600'}`}
-          aria-label="Microphone"
-        >
-          <Mic size={20} />
-        </Button>
         <Button
           onClick={handleSend}
           disabled={disabled || !inputText.trim()}
-          className="bg-green-600 hover:bg-green-700 text-white"
+          className="bg-green-600 hover:bg-green-700 text-white self-end h-12"
         >
           <Send size={18} className="mr-2" />
           Send
