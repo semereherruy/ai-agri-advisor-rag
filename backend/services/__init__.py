@@ -5,4 +5,5 @@ __all__ = [
     "translation_service",
     "logging_service",
     "cache_service",
+    "env_utils",
 ]

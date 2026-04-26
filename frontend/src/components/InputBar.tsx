@@ -1,5 +1,7 @@
 import React, { useState, KeyboardEvent } from 'react';
-import './InputBar.css';
+import { Input } from './ui/input';
+import { Button } from './ui/button';
+import { Mic, Send } from 'lucide-react';
 import './InputBar.css';
 
 interface InputBarProps {
@@ -9,7 +11,7 @@ interface InputBarProps {
 
 const InputBar: React.FC<InputBarProps> = ({ onSendMessage, disabled }) => {
   const [inputText, setInputText] = useState('');
-  const [isPressed, setIsPressed] = useState(false);
+  const [isListening, setIsListening] = useState(false);
 
   const handleSend = () => {
     if (inputText.trim() && !disabled) {
@@ -25,52 +27,45 @@ const InputBar: React.FC<InputBarProps> = ({ onSendMessage, disabled }) => {
     }
   };
 
+  const toggleMic = () => {
+    setIsListening(!isListening);
+    // Placeholder for actual speech recognition
+    console.log('Mic toggled:', !isListening);
+  };
+
   return (
-    <div className="input-bar">
-      <div className="input-container">
-        <input
+    <div className="input-bar p-4 bg-white border-t border-green-100">
+      <div className="input-container flex items-center gap-2 max-w-4xl mx-auto">
+        <Input
           type="text"
-          className="input-field"
           placeholder="Ask about teff, maize, or farming..."
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           onKeyPress={handleKeyPress}
           disabled={disabled}
+          className="flex-1"
         />
-        <button
-          className="mic-button"
-          aria-label="Microphone (placeholder)"
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={toggleMic}
           disabled={disabled}
+          className={`p-2 ${isListening ? 'text-red-500' : 'text-green-600'}`}
+          aria-label="Microphone"
         >
-          🎤
-        </button>
-        <button
-          className={`send-button ${isPressed ? 'pressed' : ''}`}
+          <Mic size={20} />
+        </Button>
+        <Button
           onClick={handleSend}
           disabled={disabled || !inputText.trim()}
-          onMouseDown={() => setIsPressed(true)}
-          onMouseUp={() => setIsPressed(false)}
-          onMouseLeave={() => setIsPressed(false)}
-          aria-label="Send message"
+          className="bg-green-600 hover:bg-green-700 text-white"
         >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <line x1="22" y1="2" x2="11" y2="13"></line>
-            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-          </svg>
-        </button>
+          <Send size={18} className="mr-2" />
+          Send
+        </Button>
       </div>
     </div>
   );
 };
 
 export default InputBar;
-

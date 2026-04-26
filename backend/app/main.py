@@ -1,12 +1,19 @@
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env at startup
+load_dotenv()
 """
 FastAPI backend for AI Agriculture Advisor (RAG-based MVP)
 """
 import sys
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException, BackgroundTasks
+from fastapi import FastAPI, HTTPException, BackgroundTasks, Request
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
+from fastapi.exceptions import RequestValidationError
 from typing import List, Optional
 import uvicorn
 import asyncio
@@ -17,8 +24,39 @@ from backend.services.rag_service import RAGService
 from backend.services.translation_service import TranslationService
 from backend.services.logging_service import LoggingService
 from backend.services.cache_service import CacheService
+from backend.services.env_utils import get_env_var
 
 app = FastAPI(title="AI Agriculture Advisor API", version="1.0.0")
+
+# Global exception handler for user‑friendly error responses
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    # Determine if we should expose internal details (debug mode)
+    debug_mode = str(get_env_var("DEBUG_MODE", default="false")).lower() == "true"
+    error_content = {"error": "An unexpected error occurred."}
+    if debug_mode:
+        # Include exception detail only when debugging
+        error_content["detail"] = str(exc)
+    return JSONResponse(
+        status_code=500,
+        content=error_content,
+    )
+
+# HTTPException handler to return JSON error messages
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request: Request, exc: HTTPException):
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"error": exc.detail if exc.detail else "An error occurred."},
+    )
+
+# Validation error handler for clearer 422 responses
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    return JSONResponse(
+        status_code=422,
+        content={"error": "Invalid request", "details": exc.errors()},
+    )
 
 # Demo-safe locked system prompt used for the `/ask` pipeline.
 # This is intentionally fixed (not user-configurable).
@@ -44,7 +82,7 @@ app.add_middleware(
 )
 
 # Initialize services
-# RAG service: Set RAG_MOCK=true to use mock mode, otherwise loads real ML models
+# RAG service: Configured via .env; remote mode by default, fallback only if RAG_ENABLE_FALLBACK=true
 rag_service = RAGService()
 translation_service = TranslationService()
 logging_service = LoggingService()
@@ -84,6 +122,7 @@ class ChatResponse(BaseModel):
     sources: List[Source]
     question_id: str
     answer_local: Optional[str] = None
+    confidence: Optional[float] = None
 
 
 class FeedbackRequest(BaseModel):
@@ -167,8 +206,8 @@ async def chat(request: ChatRequest):
         if not isinstance(rag_result, dict):
             logging_service.log_error(question_id=question_id, error=f"Unexpected rag_result type: {type(rag_result)}")
             rag_result = {"answer": "", "sources": [], "backend": "remote-offline", "answer_local": None}
-        # Enforce groundedness: if retrieval returned no sources, answer with a clear refusal
-        if not rag_result.get("sources"):
+        # If retrieval returned no sources and answer is empty, provide a refusal
+        if not rag_result.get("sources") and not rag_result.get("answer"):
             rag_result["answer"] = "I could not find this information in the documents."
 
         # Translate answer back if original was in local language
@@ -187,7 +226,7 @@ async def chat(request: ChatRequest):
         
         response_data = {
             "answer": final_answer,
-            "backend": rag_result.get("backend", "mock-rag"),
+            "backend": rag_result.get("backend", "remote"),
             "sources": formatted_sources,
             "question_id": question_id,
             "answer_local": rag_result.get("answer_local") if rag_result.get("answer_local") is not None else None,
@@ -202,7 +241,7 @@ async def chat(request: ChatRequest):
             question=original_question,
             answer=final_answer,
             sources=formatted_sources,
-            backend=rag_result.get("backend", "mock-rag"),
+            backend=rag_result.get("backend", "remote"),
             translated=translated,
             detected_language=detected_language,
             from_cache=False
@@ -296,6 +335,26 @@ async def rag_status():
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error reading RAG status: {e}")
+
+
+import requests
+
+@app.get("/debug/remote_health")
+async def remote_health():
+    try:
+        url = rag_service.remote_url
+        r = requests.get(url, timeout=5)
+        return {
+            "status": "ok",
+            "remote_url": url,
+            "status_code": r.status_code
+        }
+    except Exception as e:
+        return {
+            "status": "error",
+            "error": str(e),
+            "remote_url": rag_service.remote_url
+        }
 
 
 if __name__ == "__main__":

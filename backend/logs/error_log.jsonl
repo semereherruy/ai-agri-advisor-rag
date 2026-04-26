@@ -10,3 +10,8 @@
 {"timestamp": "2026-01-29T19:31:53.076792", "question_id": "2e377652-0c3c-4087-855f-96c9a6694f33", "error": "'str' object has no attribute 'get'"}
 {"timestamp": "2026-01-29T19:32:51.398538", "question_id": "f0914870-b5d6-4593-a005-8271a5609e6c", "error": "'str' object has no attribute 'get'"}
 {"timestamp": "2026-01-29T19:33:41.253126", "question_id": "1ebd7492-d5d1-4290-aa85-2b50237bf85b", "error": "'str' object has no attribute 'get'"}
+{"timestamp": "2026-04-25T21:47:18.574930", "question_id": "9028f89f-478b-4d90-a13f-ac55075ecf44", "error": "Remote RAG endpoint is not configured. Mock mode has been disabled."}
+{"timestamp": "2026-04-25T21:53:40.536258", "question_id": "edc57172-ba78-4348-8315-d3d58c83dccf", "error": "Remote RAG endpoint is not configured. Mock mode has been disabled."}
+{"timestamp": "2026-04-25T21:59:08.876261", "question_id": "08de436a-e34f-4ab5-a677-38533241cbd3", "error": "Remote RAG endpoint is not configured. Mock mode has been disabled."}
+{"timestamp": "2026-04-25T22:16:18.602579", "question_id": "98032377-a2a4-4184-a16e-3e6a3a5ee261", "error": "Remote RAG endpoint is not configured. Mock mode has been disabled."}
+{"timestamp": "2026-04-25T22:18:12.233644", "question_id": "1475ea06-5248-4858-8dc3-ed0613b72ce8", "error": "Remote RAG endpoint is not configured. Mock mode has been disabled."}

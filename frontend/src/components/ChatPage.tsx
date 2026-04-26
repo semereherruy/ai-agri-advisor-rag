@@ -1,44 +1,19 @@
 import React, { useState } from 'react';
-import ChatHeader from './ChatHeader';
+import { Message } from './ChatPage.types';
 import ChatWindow from './ChatWindow';
 import InputBar from './InputBar';
-import Toast from './Toast';
+import { Card, CardHeader, CardTitle, CardContent } from './ui/card';
+import { Leaf, X } from 'lucide-react';
 import './ChatPage.css';
-import chatBg from '../assets/1.jpeg';
-
-export interface Message {
-  id: string;
-  text: string;
-  isUser: boolean;
-  timestamp: Date;
-  sources?: Source[];
-  backend?: string;
-  questionId?: string;
-}
-
-export interface Source {
-  text: string;
-  metadata: {
-    crop?: string;
-    topic?: string;
-    source?: string;
-    [key: string]: any;
-  };
-}
 
 const ChatPage: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorToast, setErrorToast] = useState<string | null>(null);
 
-  const handleSuggestionClick = (suggestion: string) => {
-    handleSendMessage(suggestion);
-  };
-
   const handleSendMessage = async (text: string) => {
     if (!text.trim() || isLoading) return;
 
-    // Add user message
     const userMessage: Message = {
       id: Date.now().toString(),
       text: text.trim(),
@@ -49,15 +24,12 @@ const ChatPage: React.FC = () => {
     setIsLoading(true);
 
     try {
-      // Detect Ge'ez script for translation
       const hasGeEz = /[\u1200-\u137F]/.test(text);
       const translateLocal = hasGeEz;
 
-      const response = await fetch('/ask', {
+      const response = await fetch('http://localhost:8000/ask', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           question: text.trim(),
           k: 3,
@@ -65,13 +37,10 @@ const ChatPage: React.FC = () => {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to get response');
-      }
+      if (!response.ok) throw new Error('Failed to get response');
 
       const data = await response.json();
 
-      // Add assistant message
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         text: data.answer,
@@ -101,42 +70,69 @@ const ChatPage: React.FC = () => {
     try {
       await fetch('http://localhost:8000/feedback', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          question_id: questionId,
-          rating,
-          comment,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question_id: questionId, rating, comment }),
       });
     } catch (error) {
       console.error('Error submitting feedback:', error);
     }
   };
 
+  const handleSuggestionClick = (suggestion: string) => {
+    handleSendMessage(suggestion);
+  };
+
   return (
-    <div className="chat-page">
-      <img src={chatBg} alt="Agriculture background" className="chat-bg" />
-      <div className="chat-shell">
+    <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-100 flex flex-col">
+      {/* Header */}
+      <header className="bg-white border-b border-green-200 shadow-sm">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4 flex items-center gap-3">
+          <div className="p-2 bg-green-100 rounded-lg text-2xl">
+            <Leaf size={24} className="text-green-600" />
+          </div>
+          <div>
+            <h1 className="text-xl font-bold text-green-900">AgriRAG Advisor</h1>
+            <p className="text-sm text-green-600">AI-powered agricultural insights for Ethiopian farmers</p>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Chat Area */}
+      <main className="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 py-6 flex flex-col">
+        <Card className="flex-1 flex flex-col overflow-hidden">
+          <CardHeader className="border-b border-green-100">
+            <CardTitle className="flex items-center gap-2">
+              <span className="text-green-600">🌱</span>
+              Agricultural Assistant
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="flex-1 overflow-hidden p-0">
+            <ChatWindow
+              messages={messages}
+              isLoading={isLoading}
+              onFeedback={handleFeedback}
+              onSuggestionClick={handleSuggestionClick}
+            />
+          </CardContent>
+        </Card>
+
+        {/* Input Area */}
+        <InputBar onSendMessage={handleSendMessage} disabled={isLoading} />
+      </main>
+
+      {/* Toast Notification */}
       {errorToast && (
-        <Toast
-          message={errorToast}
-          onClose={() => setErrorToast(null)}
-        />
+        <div className="fixed bottom-4 right-4 bg-red-100 border border-red-300 text-red-700 px-4 py-3 rounded-lg shadow-lg">
+          <div className="flex items-center justify-between">
+            <span>{errorToast}</span>
+            <button onClick={() => setErrorToast(null)} className="ml-4 text-red-500 hover:text-red-700">
+              <X size={16} />
+            </button>
+          </div>
+        </div>
       )}
-      <ChatHeader />
-      <ChatWindow 
-        messages={messages} 
-        isLoading={isLoading} 
-        onFeedback={handleFeedback}
-        onSuggestionClick={handleSuggestionClick}
-      />
-      <InputBar onSendMessage={handleSendMessage} disabled={isLoading} />
-      </div>
     </div>
   );
 };
 
 export default ChatPage;
-

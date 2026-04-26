@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import MessageBubble from './MessageBubble';
-import TypingIndicator from './TypingIndicator';
-import { Message } from './ChatPage';
+import { Message } from './ChatPage.types';
+import { ScrollArea } from './ui/scroll-area';
+import { Loader } from 'lucide-react';
 import './ChatWindow.css';
 
 interface ChatWindowProps {
@@ -24,7 +25,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ messages, isLoading, onFeedback
 
   return (
     <div className="chat-window agri-chat-bg">
-      <div className="chat-window-content">
+      <ScrollArea className="chat-window-content h-full">
         {messages.length === 0 && (
           <div className="welcome-message">
             <div className="welcome-message-icon">
@@ -65,12 +66,15 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ messages, isLoading, onFeedback
             onFeedback={onFeedback}
           />
         ))}
-        {isLoading && <TypingIndicator />}
+        {isLoading && (
+          <div className="flex items-center justify-center p-4">
+            <Loader className="animate-spin text-green-600" size={32} />
+          </div>
+        )}
         <div ref={messagesEndRef} />
-      </div>
+      </ScrollArea>
     </div>
   );
 };
 
 export default ChatWindow;
-

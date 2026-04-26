@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ThumbsUp, ThumbsDown } from 'lucide-react';
 import './FeedbackBar.css';
 
 interface FeedbackBarProps {
@@ -8,12 +9,10 @@ interface FeedbackBarProps {
 
 const FeedbackBar: React.FC<FeedbackBarProps> = ({ questionId, onFeedback }) => {
   const [feedbackGiven, setFeedbackGiven] = useState(false);
-  const [rating, setRating] = useState<number | null>(null);
 
   const handleRating = async (value: number) => {
     if (feedbackGiven) return;
     
-    setRating(value);
     setFeedbackGiven(true);
     await onFeedback(questionId, value);
   };
@@ -35,14 +34,14 @@ const FeedbackBar: React.FC<FeedbackBarProps> = ({ questionId, onFeedback }) => 
           onClick={() => handleRating(5)}
           aria-label="Helpful"
         >
-          👍
+          <ThumbsUp size={18} />
         </button>
         <button
           className="feedback-button"
           onClick={() => handleRating(1)}
           aria-label="Not helpful"
         >
-          👎
+          <ThumbsDown size={18} />
         </button>
       </div>
     </div>
@@ -50,4 +49,3 @@ const FeedbackBar: React.FC<FeedbackBarProps> = ({ questionId, onFeedback }) => 
 };
 
 export default FeedbackBar;
-
